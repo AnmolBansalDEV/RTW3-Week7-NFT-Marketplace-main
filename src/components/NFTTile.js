@@ -15,7 +15,13 @@ function NFTTile (data) {
             <div className= "text-white w-full p-2 bg-gradient-to-t from-[#454545] to-transparent rounded-lg pt-5 -mt-20">
                 <strong className="text-xl">{data.data.name}</strong>
                 <p className="display-inline">
-                    {data.data.description}
+                    {`Price: ${data.data.price} ETH`}
+                </p>
+                <p className="display-inline">
+                    {`Location: ${data.data.location}`}
+                </p>
+                <p className="display-inline">
+                    {`Water Capacity: ${data.data.watercap} Litres`}
                 </p>
             </div>
         </div>

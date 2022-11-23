@@ -73,7 +73,10 @@ contract NFTMarketplace is ERC721URIStorage {
         createMarketItem(newTokenId, price);
         return newTokenId;
     }
-
+    function getListedTokenForId(uint256 tokenId) public view returns (MarketItem memory) {
+        return idMarketItem[tokenId];
+    }
+    
     function createMarketItem(uint256 tokenId, uint256 price) private {
         require(price > 0, "Price must be at least 1 unit");
         require(

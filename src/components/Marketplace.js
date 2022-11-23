@@ -46,22 +46,36 @@ async function getAllNFTs() {
     let contract = new ethers.Contract(MarketplaceJSON.address, MarketplaceJSON.abi, signer)
     //create an NFT Token
     let transaction = await contract.fetchMarketItems()
-
     //Fetch all the details of every NFT from the contract and display
     const items = await Promise.all(transaction.map(async i => {
-        console.log(contract.tokenURI(i.tokenId))
-        const tokenURI = await contract.tokenURI(i.tokenId);
-        console.log(tokenURI)
+        let tokenURI = await contract.tokenURI(i.tokenId);
+
+        const myArray1 = tokenURI.split("/");
+        tokenURI = "https://ipfs.io/ipfs/"+ myArray1[4] ;
+        
+
         let meta = await axios.get(tokenURI);
         meta = meta.data;
 
+        let imageLink = `${meta.image}` ;
         let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
+
+        const myArray2 = imageLink.split("/");
+        let image = "https://ipfs.io/ipfs/"+ myArray2[4] ;
+
+
         let item = {
             price,
             tokenId: i.tokenId.toNumber(),
             seller: i.seller,
             owner: i.owner,
-            image: meta.image,
+            your_name: meta.your_name,
+            watercap: meta.watercap,
+            license: meta.license,
+            location: meta.location,
+            latitude: meta.latitude,
+            longitude: meta.longitude,
+            image: image,
             name: meta.name,
             description: meta.description,
         }
