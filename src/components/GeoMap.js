@@ -1,13 +1,12 @@
 import { useGeolocated } from "react-geolocated";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { items } from "./data.js";
 import "../App.css"
 import React from 'react'
 import Navbar from "./Navbar";
-import NFTTile from "./NFTTile";
 import MarketplaceJSON from "../Marketplace.json";
 import axios from "axios";
 import { useState } from "react";
+
 
 export default function GeoMap() {
     const {
