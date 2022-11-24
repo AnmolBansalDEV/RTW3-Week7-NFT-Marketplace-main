@@ -37,7 +37,7 @@ async function getNFTData(tokenId) {
         let image = "https://ipfs.io/ipfs/"+ myArray2[4] ;
     console.log(meta)
     let item =  {
-        price : listedToken.price,
+        price : meta.price,
         tokenId: tokenId,
         seller: listedToken.seller,
         owner: listedToken.owner,

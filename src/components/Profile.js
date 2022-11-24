@@ -50,7 +50,7 @@ export default function Profile () {
     console.log(price)
     
             let item = {
-                price: i.price,
+                price,
                 tokenId: i.tokenId.toNumber(),
                 seller: i.seller,
                 owner: i.owner,

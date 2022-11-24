@@ -49,7 +49,7 @@ async function getAllNFTs() {
     //Fetch all the details of every NFT from the contract and display
     const items = await Promise.all(transaction.map(async i => {
         let tokenURI = await contract.tokenURI(i.tokenId);
-
+        console.log(i)
         const myArray1 = tokenURI.split("/");
         tokenURI = "https://ipfs.io/ipfs/"+ myArray1[4] ;
         
@@ -58,6 +58,7 @@ async function getAllNFTs() {
         meta = meta.data;
 
         let imageLink = `${meta.image}` ;
+        console.log(i.price.toString())
         let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
 
         const myArray2 = imageLink.split("/");
@@ -65,7 +66,7 @@ async function getAllNFTs() {
 
 
         let item = {
-            price,
+            price: price,
             tokenId: i.tokenId.toNumber(),
             seller: i.seller,
             owner: i.owner,
@@ -85,6 +86,7 @@ async function getAllNFTs() {
     updateFetched(true);
     updateData(items);
 }
+
 
 if(!dataFetched)
     getAllNFTs();

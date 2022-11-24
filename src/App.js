@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar.js';
 import Marketplace from './components/Marketplace';
 import Profile from './components/Profile';
+import GeoMap from './components/GeoMap';
 import SellNFT from './components/SellNFT';
 import NFTPage from './components/NFTpage';
 import ReactDOM from "react-dom/client";
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="container">
         <Routes>
+          <Route path="/GeoMap" element={<GeoMap />}/>        
           <Route path="/" element={<Marketplace />}/>
           <Route path="/nftPage" element={<NFTPage />}/>        
           <Route path="/profile" element={<Profile />}/>

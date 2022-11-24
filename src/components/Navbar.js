@@ -82,6 +82,15 @@ async function connectWebsite() {
           </li>
           <li className='w-2/6'>
             <ul className='lg:flex justify-between font-bold mr-10 text-lg'>
+            {location.pathname === "/GeoMap" ? 
+              <li className='border-b-2 hover:pb-0 p-2'>
+                <Link to="/GeoMap">GeoMap</Link>
+              </li>
+              :
+              <li className='hover:border-b-2 hover:pb-0 p-2'>
+                <Link to="/GeoMap">GeoMap</Link>
+              </li>              
+              }
               {location.pathname === "/" ? 
               <li className='border-b-2 hover:pb-0 p-2'>
                 <Link to="/">Marketplace</Link>
@@ -110,7 +119,7 @@ async function connectWebsite() {
               </li>              
               }  
               <li>
-                <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm" onClick={connectWebsite}>{connected? "Connected":"Connect Wallet"}</button>
+                <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm" onClick={connectWebsite}>{connected ? "Connected":"Connect Wallet"}</button>
               </li>
             </ul>
           </li>

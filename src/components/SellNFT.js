@@ -1,8 +1,11 @@
 import Navbar from "./Navbar";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import { uploadFileToIPFS, uploadJSONToIPFS } from "../pinata";
 import Marketplace from '../Marketplace.json';
 import { useLocation } from "react-router";
+
+  
+
 
 export default function SellNFT () {
     const [formParams, updateFormParams] = useState({ name: '', your_name: '', watercap: '', license: '', location: '', latitude: '', longitude: '', description: '', price: ''});
@@ -11,6 +14,10 @@ export default function SellNFT () {
     const [message, updateMessage] = useState('');
     const location = useLocation();
 
+
+   
+      
+     
     //This function uploads the NFT image to IPFS
     async function OnChangeFile(e) {
         let file = e.target.files[0];
@@ -83,7 +90,7 @@ export default function SellNFT () {
 
             alert("Successfully listed your NFT!");
             updateMessage("");
-            updateFormParams({ name: '', your_name: '', watercap: '', license: '', location: '', latitude: '', longitude: '', description: '', price: ''});
+            updateFormParams({ name: '', your_name: '', watercap: '', license: '', location: '', latitude: '', longitude: '', description: '', price: 0});
             window.location.replace("/")
         }
         catch(e) {
@@ -114,17 +121,31 @@ export default function SellNFT () {
                     <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="license">Enter the License ID</label>
                     <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="location" type="text" placeholder="IND/12/AB/343" onChange={e => updateFormParams({...formParams, license: e.target.value})} value={formParams.license}></input>
                 </div>
+                {/* <div id="map" ref={ref}>
+                <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="location">Location</label>
+      <input
+        value={value}
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+        onChange={handleInput}
+        disabled={!ready}
+        id="location" type="text"
+        placeholder="Krishna Godavari basin"
+      />
+      {/* We can use the "status" to decide whether we should display the dropdown or not */}
+      {/* </form>/{status === "OK" && <ul>{renderSuggestions()}</ul>}
+    </div> */} */
                 <div className="mb-4">
                     <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="location">Location</label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="location" type="text" placeholder="Krishna Godavari basin" onChange={e => updateFormParams({...formParams, location: e.target.value})} value={formParams.location}></input>
+<input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    id="location" type="text" placeholder="Krishna Godavari basin" onChange={e => updateFormParams({...formParams, location: e.target.value})} value={formParams.location}></input>
                 </div>
                 <div className="mb-4">
                     <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="latitude">Latitude</label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="latitude" type="text" placeholder="32.34" onChange={e => updateFormParams({...formParams, latitude: e.target.value})} value={formParams.latitude}></input>
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline disabled" id="latitude" type="text" placeholder="32.34" onChange={e => updateFormParams({...formParams, latitude: e.target.value})} value={formParams.latitude}></input>
                 </div>
                 <div className="mb-4">
                     <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="longitude">Longitude</label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="longitude" type="text" placeholder="12.21" onChange={e => updateFormParams({...formParams, longitude: e.target.value})} value={formParams.longitude}></input>
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline disabled" id="longitude" type="text" placeholder="12.21" onChange={e => updateFormParams({...formParams, longitude: e.target.value})} value={formParams.longitude}></input>
                 </div>
                 <div className="mb-6">
                     <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="description">NFT Description</label>
@@ -147,4 +168,4 @@ export default function SellNFT () {
         </div>
         </div>
     )
-}
+            }
