@@ -47,9 +47,10 @@ export default function Profile () {
             console.log(myArray2)
             let image = `https://ipfs.io/ipfs/${myArray2}` ;
     console.log(image)
+    console.log(price)
     
             let item = {
-                price,
+                price: i.price,
                 tokenId: i.tokenId.toNumber(),
                 seller: i.seller,
                 owner: i.owner,
