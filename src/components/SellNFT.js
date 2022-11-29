@@ -213,24 +213,49 @@ export default function SellNFT() {
               }
               value={formParams.watercap}
             ></input>
+              <a href="https://www.fao.org/fishery/docs/CDrom/FAO_Training/FAO_Training/General/x6705e/x6705e04.htm" style={{color: "blue", textDecoration: "underline"}} alt="web link">Know how to estimate the reservoir Capacity.</a>
           </div>
           <div className="mb-4">
             <label
               className="block text-purple-500 text-sm font-bold mb-2"
               htmlFor="license"
             >
-              Enter the License ID
+              Enter the Certification
             </label>
-            <input
+            <select
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="location"
+              id="license"
               type="text"
-              placeholder="IND/12/AB/343"
+              placeholder="Choose option"
               onChange={(e) =>
                 updateFormParams({ ...formParams, license: e.target.value })
               }
               value={formParams.license}
-            ></input>
+            >
+                <option value="">-- Choose --</option>
+                <option value="IS 10500:2012-Safe drinking water">IS 10500:2012-Safe drinking water</option>
+                <option value="IS 1172:1993-Basic requirement for water supply">IS 1172:1993-Basic requirement for water supply</option>
+                <option value="IS 17842:2020-Water Supply management system">IS 17842:2020-Water Supply management system</option>
+                {/* <option value="green">other</option> */}
+            </select>
+            <a href="http://www.cwc.gov.in/" style={{color: "blue", textDecoration: "underline"}} alt="web link">source: CWC</a>
+            {/* <label
+              className="block text-purple-500 text-sm font-bold mb-2"
+              htmlFor="watercap"
+            >
+              Specify
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="watercap"
+              type="text"
+              placeholder="2500"
+              onChange={(e) =>
+                updateFormParams({ ...formParams, watercap: e.target.value })
+              }
+              value={formParams.watercap}
+            ></input> */}
+            
           </div>
           
           {/* <div className="mb-4">
@@ -373,6 +398,8 @@ export default function SellNFT() {
                 updateFormParams({ ...formParams, price: e.target.value })
               }
             ></input>
+            <a href="https://iwaponline.com/wp/article/24/2/363/86359/Research-on-water-resources-pricing-model-under" style={{color: "blue", textDecoration: "underline"}} alt="web link">Know how to price your water resource</a>
+
           </div>
           <div>
             <label
