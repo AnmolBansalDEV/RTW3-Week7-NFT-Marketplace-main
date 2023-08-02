@@ -174,6 +174,7 @@ REACT_APP_PINATA_SECRET=<YOUR PINATA SECRET>
 - [x] React
 - [x] Node.js
 - [x] JavaScript
+- [x] Solidity
 - [x] Hardhat (Ethereum development framework)
 - [x] Alchemy (Ethereum RPC)
 - [x] IPFS (InterPlanetary File System)
