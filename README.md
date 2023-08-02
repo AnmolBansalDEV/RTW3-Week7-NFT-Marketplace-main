@@ -187,5 +187,4 @@ REACT_APP_PINATA_SECRET=<YOUR PINATA SECRET>
 
 We're in talks with UNESCO and the Government of India to deploy AquaSavvy on a national scale. With their guidance, we aim to evolve AquaSavvy into a startup, fostering responsible water management and making a positive environmental impact. Stay tuned for our exciting journey ahead! 🌊
 
-
-<img src='https://drive.google.com/uc?export=view&id=1L4lIfEwPyvuIfK58aoxHVb9vnkTjHA9u' />
+<img src='https://drive.google.com/uc?export=view&id=112vGpI0Eo0y6aGazM0OXDhX4mN_1BBmH' />
