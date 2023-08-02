@@ -2,12 +2,7 @@ import Navbar from "./Navbar";
 import { useState } from "react";
 import { uploadFileToIPFS, uploadJSONToIPFS } from "../pinata";
 import Marketplace from "../Marketplace.json";
-import { useLocation } from "react-router";
-import PlacesAutocomplete from "react-places-autocomplete";
-import {
-  geocodeByAddress,
-  getLatLng
-} from "react-places-autocomplete";
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 
 
@@ -333,13 +328,12 @@ export default function SellNFT() {
               Latitude
             </label>
             <input
-            disabled={true}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="latitude"
               type="text"
-            //   onChange={(e) =>
-            //     updateFormParams({ ...formParams, latitude: e.target.value })
-            //   }
+              onChange={(e) =>
+                updateFormParams({ ...formParams, latitude: e.target.value })
+              }
               value={formParams.latitude}
             ></input>
           </div>
@@ -351,13 +345,12 @@ export default function SellNFT() {
               Longitude
             </label>
             <input
-            disabled={true}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline disabled"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="longitude"
               type="text"
-            //   onChange={(e) =>
-            //     updateFormParams({ ...formParams, longitude: e.target.value })
-            //   }
+              onChange={(e) =>
+                updateFormParams({ ...formParams, longitude: e.target.value })
+              }
               value={formParams.longitude}
             ></input>
           </div>

@@ -1,13 +1,4 @@
-import logo from '../logo_3.png';
-import fullLogo from '../full_logo.png';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 
@@ -27,7 +18,6 @@ async function getAddress() {
 
 function updateButton() {
   const ethereumButton = document.querySelector('.enableEthereumButton');
-  ethereumButton.textContent = "Connected";
   ethereumButton.classList.remove("hover:bg-blue-70");
   ethereumButton.classList.remove("bg-blue-500");
   ethereumButton.classList.add("hover:bg-green-70");
@@ -37,12 +27,12 @@ function updateButton() {
 async function connectWebsite() {
 
     const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-    if(chainId !== '0x5')
+    if(chainId !== "0xaa36a7")
     {
       //alert('Incorrect network! Switch your metamask network to Rinkeby');
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x5' }],
+        params: [{ chainId: "0xaa36a7" }],
      })
     }  
     await window.ethereum.request({ method: 'eth_requestAccounts' })
@@ -55,14 +45,23 @@ async function connectWebsite() {
 }
 
   useEffect(() => {
-    let val = window.ethereum.isConnected();
-    if(val)
-    {
+    // let val = window.ethereum.isConnected
+    window.ethereum.request({method: 'eth_accounts'}).then(
+     accounts => {
       console.log("here");
       getAddress();
-      toggleConnect(val);
+      toggleConnect(accounts.length);
       updateButton();
-    }
+     }  
+    ).catch((err) => {
+      if (err.code === 4001) {
+        // EIP-1193 userRejectedRequest error
+        // If this happens, the user rejected the connection request.
+        console.log('Please connect to MetaMask.');
+      } else {
+        console.error(err);
+      }
+    });
 
     window.ethereum.on('accountsChanged', function(accounts){
       window.location.replace(location.pathname)

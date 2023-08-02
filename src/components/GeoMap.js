@@ -1,11 +1,10 @@
 import { useGeolocated } from "react-geolocated";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "../App.css"
-import React from 'react'
+import React, {useState} from 'react'
 import Navbar from "./Navbar";
 import MarketplaceJSON from "../Marketplace.json";
 import axios from "axios";
-import { useState } from "react";
 
 
 export default function GeoMap() {
@@ -97,7 +96,7 @@ console.log(data)
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {data.map((item, index) => {
-            var lat=parseFloat(item.longitude);
+            let lat=parseFloat(item.longitude);
             console.log("Location is "+lat)
             
             return (
